@@ -1,4 +1,3 @@
-
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, TextAreaField, SubmitField,FloatField
 from wtforms.validators import Required
@@ -17,6 +16,4 @@ class ProductForm(FlaskForm):
     brand = StringField("Brand", validators=[Required()])
     model = StringField("Product Model", validators=[Required()])
     category = StringField("Product Category", validators=[Required()])
-
-
     submit = SubmitField('Submit')
