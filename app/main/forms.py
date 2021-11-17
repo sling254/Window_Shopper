@@ -1,8 +1,8 @@
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, SubmitField,FloatField
+from wtforms import StringField, SelectField, TextAreaField, SubmitField,IntegerField
+from wtforms.fields.simple import FileField
 from wtforms.validators import Required
-
 class UpdateProfile(FlaskForm):
     bio = TextAreaField('Write a brief bio about you.',validators = [Required()])
     submit = SubmitField('Save')
@@ -10,8 +10,8 @@ class UpdateProfile(FlaskForm):
 class ProductForm(FlaskForm):
     name = StringField('Product Name', validators=[Required()])
     short_description = StringField('Product Description', validators=[Required()])
-    long_description = StringField('Product Description', validators=[Required()])
-    price = FloatField('Enter the Product Prices', validators=[Required()])
+    long_description = StringField('Long Product Description', validators=[Required()])
+    price = IntegerField('Enter the Product Prices', validators=[Required()])
     color = StringField("Enter Product Color", validators=[Required()])
     stock = StringField("Product Stock", validators=[Required()])
     brand = StringField("Brand", validators=[Required()])
