@@ -1,0 +1,161 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="container">
+    <form class="row g-3"method="POST"  action=""enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <legend class=" h1 text-center text-decoration-underline">Add a Product</legend>
+        
+        <div class="col-md-6">
+            <div class="form-gruop">
+                {{ form.name.label(class="form-control-label")}}                
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-gruop">
+                {{ form.short_description.label(class="form-control-label")}}                
+                {% if form.short_description.errors %}
+                    {{ form.short_description(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.short_description.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.short_description(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-gruop">
+                {{ form.long_description.label(class="form-control-label", rows="3")}}                
+                {% if form.long_description.errors %}
+                    {{ form.long_description(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.long_description.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.long_description(class="form-control form-control-lg", rows="3")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-gruop">
+                {{ form.price.label(class="form-control-label")}}                
+                {% if form.price.errors %}
+                    {{ form.price(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.price.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.price(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-gruop">
+                {{ form.color.label(class="form-control-label")}}                
+                {% if form.color.errors %}
+                    {{ form.color(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.color.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.color(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-gruop">
+                {{ form.stock.label(class="form-control-label")}}                
+                {% if form.stock.errors %}
+                    {{ form.stock(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.stock.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.stock(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <!-- hkjh -->
+        <div class="col-md-6">
+            <div class="form-gruop">
+                {{ form.brand.label(class="form-control-label")}}                
+                {% if form.brand.errors %}
+                    {{ form.brand(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.brand.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.brand(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-gruop">
+                {{ form.model.label(class="form-control-label")}}                
+                {% if form.model.errors %}
+                    {{ form.model(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.model.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.model(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-gruop">
+                {{ form.category.label(class="form-control-label")}}                
+                {% if form.category.errors %}
+                    {{ form.category(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.category.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+            
+                    </div>
+                {% else %}
+                    {{ form.category(class="form-control form-control-lg")}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-gruop mt-3 mb-2">
+                {{ form.submit(class="btn btn-outine-info btn-primary")}}
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

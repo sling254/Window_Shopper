@@ -1,17 +1,42 @@
-from flask import render_template, redirect, url_for,abort,request
+from flask import render_template, redirect, url_for,abort,request, flash
 from . import main
 from flask_login import login_required,current_user
 from ..models import User,Product
-from .forms import UpdateProfile
+from .forms import UpdateProfile,ProductForm
 from .. import db, photos
 
-@main.route('/')
+
+@main.route('/', methods = ['GET','POST'])
 def index():
     products = Product.query.all()
+    
+    form = ProductForm()
+    return render_template("index.html",form=form, products=products)
 
-    return render_template("index.html", products=products)
+@main.route('/new_product', methods = ['GET','POST'])
+def new_product():
+    form = ProductForm()
+    if form.validate_on_submit():
+        name=form.name.data
+        short_description = form.short_description.data
+        long_description = form.long_description.data
+        price = form.price.data
+        color = form.color.data
+        stock = form.stock.data
+        brand = form.brand.data
+        model = form.model.data
+        category = form.category.data
+        product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category,user_id = current_user._get_current_object().id)
+        product.save_p()
+        flash(f'Your Product {name} has been added successfully', 'success')
+        return redirect(url_for('main.index'))
 
+    return render_template("new_product.html",form=form)
 
+@main.route('/deals')
+def deals():
+    products = Product.query.order_by(Product.time.desc())
+    return render_template('deals.html', products=products)
 @main.route('/user/<name>')
 def profile(name):
     user = User.query.filter_by(username = name).first()

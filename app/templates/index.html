@@ -1,7 +1,16 @@
 {% extends 'base.html'%}
+{%block content%}
 
-{% for product in products %}
-<li>
-    {{product}}
-</li>
-{% endfor %}
+<div class="container">
+    <div class="col-md-4">
+        {% for product in products %}
+        <li>
+            {{product.price<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">}}
+        </li>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

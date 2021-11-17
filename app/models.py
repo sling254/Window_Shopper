@@ -16,7 +16,7 @@ class User(UserMixin,db.Model):
   secure_password = db.Column(db.String(255),nullable = False)
   bio = db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
-  products = db.relationship('Product', backref='user', lazy='dynamic')
+  products = db.relationship('Product', backref='owner', lazy=True)
 
   @property
   def set_password(self):
@@ -56,9 +56,8 @@ class Product(db.Model):
   img_2_path= db.Column(db.String())
   img_3_path= db.Column(db.String())
   img_4_path= db.Column(db.String())
-  time = db.Column(db.DateTime, default = datetime.utcnow)
-  
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  time = db.Column(db.DateTime, default = datetime.utcnow)  
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   
   def save_p(self):
     db.session.add(self)
