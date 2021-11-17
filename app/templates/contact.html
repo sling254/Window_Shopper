@@ -1,5 +1,4 @@
 {% extends 'index.html' %}
-{% block home_content %}
 
     <head>
         <meta charset="utf-8">
@@ -9,9 +8,9 @@
         <title>comments</title>
     </head>
 
-<body>
-    <div class="container">
-        <div class="col-12 comment-form" id="comment-form{{ comment.id }}">
+    <body>
+        <div class="container">
+            <div class="col-12 comment-form" id="comment-form{{ comment.id }}">
                 <form action="">
                     <label for="comment{{comment.id}}">Comment</label>
                     <textarea id="comment{{comment.id}}" class="form-control" rows="10">
@@ -19,10 +18,39 @@
                     <button class="btn btn-primary submit-comment" data-id="{{comment.id}}">Submit comment</button>
                 </form>
             </div>
-
+    
             <div class="footer">
-                <p>Footer</p>
+                <hr class="my-5">
+                <footer class="bg-dark text-center text-white">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Social media -->
+                    <section class="mb-4">
+                    <!-- Facebook -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                        ><i class="fab fa-facebook-f"></i></a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                        ><i class="fab fa-twitter"></i></a>
+
+                    <!-- Google -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                        ><i class="fab fa-google"></i></a>
+                    <!-- Linkedin -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                        ><i class="fab fa-linkedin-in"></i></a>
+                    </section>
+                    <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">                    
+                    <a class="text-white" href="https://mdbootstrap.com/">© 2021 Copyright:</a>
+                </div>
+                <!-- Copyright -->
+                </footer>
             </div>
-            <script src="" async defer></script>
         </div>
-</body>
+    </body>
