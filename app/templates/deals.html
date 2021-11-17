@@ -1,71 +1,55 @@
 {% extends 'base.html'%}
-{% content block %}
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://media.istockphoto.com/photos/running-shoes-picture-id1249496770?b=1&k=20&m=1249496770&s=170667a&w=0&h=_SUv4odBqZIzcXvdK9rqhPBIenbyBspPFiQOSDRi-RI=" class="card-img-top" alt="Shoes Images">
-        <div class="card-body">
-          <h5 class="card-title">Sneaker shoes</h5>
-          <p class="card-text">Sold by: Sling Shoes 254</p>
-          <p class="card-text">Ksh.700-1,500</p>
-          <a href="#"><button class="view">View</button></a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s10-1.jpg" class="card-img-top" alt="Samsung Phone">
-        <div class="card-body">
-          <h5 class="card-title">Samsung Galaxy S10</h5>
-          <p class="card-text">Sold by: Odero Tech Shop</p>
-          <p class="card-text">Ksh.45,000-60,000</p>
-          <a href="#"><button class="view">View</button></a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDJFSpN3v0nTX6ksBond6OfggzvTpnJNXyMQ&usqp=CAU" class="card-img-top" alt="Women Gym Wear">
-        <div class="card-body">
-          <h5 class="card-title">Women's Gym Wear</h5>
-          <p class="card-text">Sold by: Vod Wear</p>
-          <p class="card-text">Ksh.1,300-2,000</p>
-          <a href="#"><button class="view">View</button></a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvPDhvPxWHWPnewu0Extemr7gfcNVkIPnevw&usqp=CAU" class="card-img-top" alt="Dining Table">
-        <div class="card-body">
-          <h5 class="card-title">4-seat Dining Table</h5>
-          <p class="card-text">Sold by: Bii Wood works</p>
-          <p class="card-text">Ksh.10,000-12,000</p>
-          <a href="#"><button class="view">View</button></a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyweLHDX61r9x2osCPcBvCNhZwkWELLeoq2Q&usqp=CAU" class="card-img-top" alt="Human Hair Wig">
-          <div class="card-body">
-            <h5 class="card-title">Human Hair Wig</h5>
-            <p class="card-text">Sold by: Betty's Hair Shop</p>
-            <p class="card-text">Ksh.1,000-1,500</p>
-            <a href="#"><button class="view">View</button></a>
+{% block content %}
+
+<section class="Products">
+  <div class="container">
+      <h1 class="text-center mt-3">Deals Of The Day</h1>
+      <div class="row">
+          {% for product in products %}
+          <div class="col-md-6">
+              <div class="card mb-3" style="max-width: 5400px;">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                      <img src="https://random.imagecdn.app/400/400" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ product.name | upper }}</h5>
+                          <p class="card-text">{{product.short_description}}</p>
+                          <p class="card-text">Ksh:{{product.price}}</p>
+                          <a class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#detailsModal">VIEW</a>
+                          <p class="card-footer"><small class="text-muted">Date updated{{product.time.strftime('%d-%m-%Y')}}</small></p>
+                      </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa9bwglncBRi9BgbTL3v25OrAm5LEU-YG4Ew&usqp=CAU" class="card-img-top" alt="Cooking Pots">
-          <div class="card-body">
-            <h5 class="card-title">5-Piece Non-stick Cooking Pots</h5>
-            <p class="card-text">Sold by: Muganda's KItchen</p>
-            <p class="card-text">Ksh.1,500-2,500</p>
-            <a href="#"><button class="view">View</button></a>
+          <!-- Modal -->
+          <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{ product.name | upper }}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="card-text">Product Description: {{product.long_description}}</p>
+                  <p class="card-text">Product Color: {{product.color}}</p>
+                  <p class="card-text">Product Stock: {{product.Stock}}</p>
+                  <p class="card-text">Product Brand: {{product.brand}}</p>
+                  <p class="card-text">Product Model: {{product.model}}</p>
+                  <p class="card-text">Product Category: {{product.category}}</p>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+          {% endfor %}
       </div>
   </div>
-{% end block %}
+</section>
+{% endblock %}

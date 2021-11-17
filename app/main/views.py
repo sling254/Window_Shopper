@@ -8,8 +8,14 @@ from .. import db, photos
 
 @main.route('/', methods = ['GET','POST'])
 def index():
-    form = ProductForm()
     products = Product.query.all()
+    
+    form = ProductForm()
+    return render_template("index.html",form=form, products=products)
+
+@main.route('/new_product', methods = ['GET','POST'])
+def new_product():
+    form = ProductForm()
     if form.validate_on_submit():
         name=form.name.data
         short_description = form.short_description.data
@@ -22,13 +28,15 @@ def index():
         category = form.category.data
         product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category,user_id = current_user._get_current_object().id)
         product.save_p()
-        
         flash(f'Your Product {name} has been added successfully', 'success')
         return redirect(url_for('main.index'))
 
-    return render_template("index.html", products=products,form=form)
+    return render_template("new_product.html",form=form)
 
-
+@main.route('/deals')
+def deals():
+    products = Product.query.order_by(Product.time.desc())
+    return render_template('deals.html', products=products)
 @main.route('/user/<name>')
 def profile(name):
     user = User.query.filter_by(username = name).first()

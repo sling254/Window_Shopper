@@ -9,7 +9,7 @@ class UpdateProfile(FlaskForm):
 class ProductForm(FlaskForm):
     name = StringField('Product Name', validators=[Required()])
     short_description = StringField('Product Description', validators=[Required()])
-    long_description = StringField('Long Product Description', validators=[Required()])
+    long_description = TextAreaField('Long Product Description', validators=[Required()])
     price = IntegerField('Enter the Product Prices', validators=[Required()])
     color = StringField("Enter Product Color", validators=[Required()])
     stock = StringField("Product Stock", validators=[Required()])
