@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for,abort,request, flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Product
-from .forms import UpdateProfile,ProductForm
+from ..models import User,Product,Comment
+from .forms import UpdateProfile,ProductForm,CommentsForm
 from .. import db, photos
 
 
@@ -32,6 +32,21 @@ def new_product():
         return redirect(url_for('main.index'))
 
     return render_template("new_product.html",form=form)
+
+
+@main.route('/comments', methods = ['GET','POST'])
+def comments():
+    form = CommentsForm()
+    if form.validate_on_submit():
+        comments=form.comments.data
+        comment = Comment(comments=comments)
+        db.session.add(comment)
+        db.session.commit()
+        
+        flash(f'We have received your comments Thank you', 'success')
+        return redirect(url_for('main.index'))
+
+    return render_template("comments.html",form=form)
 
 @main.route('/deals')
 def deals():
