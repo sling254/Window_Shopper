@@ -5,11 +5,11 @@
     <div class="col-md-4">
         {% for product in products %}
         <li>
-            {{product}}
+            {{product.price}}
         </li>
         {% endfor %}
     </div>
-<form action=""method="POST">
+<form method="POST"  action=""enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <div class="form-gruop">
         {{ form.name.label(class="form-control-label")}}                
@@ -137,6 +137,7 @@
             {{ form.category(class="form-control form-control-lg")}}
         {% endif %}
     </div>
+    
 
 
     <div class="form-gruop mt-3 mb-2">

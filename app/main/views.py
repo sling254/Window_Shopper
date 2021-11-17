@@ -5,6 +5,7 @@ from ..models import User,Product
 from .forms import UpdateProfile,ProductForm
 from .. import db, photos
 
+
 @main.route('/', methods = ['GET','POST'])
 def index():
     form = ProductForm()
@@ -19,7 +20,7 @@ def index():
         brand = form.brand.data
         model = form.model.data
         category = form.category.data
-        product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category)
+        product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category,user_id = current_user._get_current_object().id)
         product.save_p()
         
         flash(f'Your Product {name} has been added successfully', 'success')
