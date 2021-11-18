@@ -52,7 +52,7 @@ class Product(db.Model):
   brand = db.Column(db.String(200),nullable=False)
   model = db.Column(db.String(200),nullable=False)  
   category = db.Column(db.String(255), index = True,nullable= False)
-  phone_no = db.Column(db.String(20),nullable=False)
+  phone_no = db.Column(db.Integer,nullable=False)
   img_1_path= db.Column(db.String())
   img_2_path= db.Column(db.String())
   img_3_path= db.Column(db.String())

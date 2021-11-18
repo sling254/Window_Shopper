@@ -1,8 +1,8 @@
-"""Initial Migration
+"""Intial Migrations
 
-Revision ID: de202f139537
+Revision ID: a919ab46c8d1
 Revises: 
-Create Date: 2021-11-18 10:40:49.287082
+Create Date: 2021-11-18 11:40:24.993222
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'de202f139537'
+revision = 'a919ab46c8d1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,14 +36,14 @@ def upgrade():
     )
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=55), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('short_description', sa.Text(), nullable=False),
     sa.Column('long_description', sa.Text(), nullable=False),
-    sa.Column('price', sa.DECIMAL(precision=10, scale=2), nullable=True),
+    sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('color', sa.String(), nullable=False),
     sa.Column('stock', sa.Integer(), nullable=False),
-    sa.Column('brand', sa.String(length=10), nullable=False),
-    sa.Column('model', sa.String(length=10), nullable=False),
+    sa.Column('brand', sa.String(length=200), nullable=False),
+    sa.Column('model', sa.String(length=200), nullable=False),
     sa.Column('category', sa.String(length=255), nullable=False),
     sa.Column('phone_no', sa.String(length=20), nullable=False),
     sa.Column('img_1_path', sa.String(), nullable=True),
