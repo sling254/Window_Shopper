@@ -12,6 +12,16 @@ def index():
     
     form = ProductForm()
     return render_template("index.html",form=form, products=products)
+@main.route('/about', methods = ['GET','POST'])
+def about():
+    
+    return render_template("about.html")
+
+
+@main.route('/review', methods = ['GET','POST'])
+def review():
+    
+    return render_template("reviews.html")
 
 @main.route('/new_product', methods = ['GET','POST'])
 def new_product():

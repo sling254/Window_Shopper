@@ -13,9 +13,10 @@ class ProductForm(FlaskForm):
     price = IntegerField('Enter the Product Prices', validators=[Required()])
     color = StringField("Enter Product Color", validators=[Required()])
     stock = StringField("Product Stock", validators=[Required()])
-    brand = StringField("Brand", validators=[Required()])
+    brand = StringField("Product Brand", validators=[Required()])
     model = StringField("Product Model", validators=[Required()])
     category = StringField("Product Category", validators=[Required()])
+    phone_no = IntegerField("Enter Phone_number", validators=[Required()])
     submit = SubmitField('Submit')
 
 

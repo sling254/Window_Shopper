@@ -9,15 +9,15 @@
           <div class="col-md-6">
               <div class="card mb-3" style="max-width: 5400px;">
                   <div class="row g-0">
-                      <div class="col-md-4">
+                      <!-- <div class="col-md-4">
                       <img src="https://random.imagecdn.app/400/400" class="img-fluid rounded-start" alt="...">
-                      </div>
+                      </div> -->
                       <div class="col-md-8">
                       <div class="card-body">
                           <h5 class="card-title">{{ product.name | upper }}</h5>
                           <p class="card-text">{{product.short_description}}</p>
                           <p class="card-text">Ksh:{{product.price}}</p>
-                          <a class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#detailsModal">VIEW</a>
+                          <a class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#detailsModal{{product.id}}">VIEW</a>
                           <p class="card-footer"><small class="text-muted">Date updated{{product.time.strftime('%d-%m-%Y')}}</small></p>
                       </div>
                       </div>
@@ -25,7 +25,7 @@
               </div>
           </div>
           <!-- Modal -->
-          <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="detailsModal{{product.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -43,6 +43,7 @@
 
                 </div>
                 <div class="modal-footer">
+                  <h1 class="">Contact:: {{product.phone_no}}</h1>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
