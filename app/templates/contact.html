@@ -12,10 +12,10 @@
         <div class="container">
             <div class="col-12 comment-form" id="comment-form{{ comment.id }}">
                 <form action="">
-                    <label for="comment{{comment.id}}">Comment</label>
+                    <label for="comment{{comment.id}}">Drop your comment here</label>
                     <textarea id="comment{{comment.id}}" class="form-control" rows="10">
                     </textarea>
-                    <button class="btn btn-primary submit-comment" data-id="{{comment.id}}">Submit comment</button>
+                    span<button class="btn btn-primary submit-comment" data-id="{{comment.id}}">Submit comment</button>
                 </form>
             </div>
     
@@ -27,27 +27,26 @@
                     <!-- Section: Social media -->
                     <section class="mb-4">
                     <!-- Facebook -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                        ><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                        <img src="{{ url_for('static', filename='/img/facebook.png')}}"></a>
 
                     <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                        ><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                        <img src="{{ url_for('static', filename='/img/twitter.png')}}"></a>
 
                     <!-- Google -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                        ><i class="fab fa-google"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                         <img src="{{ url_for('static', filename='/img/g_plus.png')}}"></a>
                     <!-- Linkedin -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                        ><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                         <img src="{{ url_for('static', filename='/img/you_tube.png')}}"></a>
                     </section>
-                    <!-- Section: Social media -->
                 </div>
                 <!-- Grid container -->
 
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">                    
-                    <a class="text-white" href="https://mdbootstrap.com/">© 2021 Copyright:</a>
+                    <a class="text-white" href="https://mdbootstrap.com/">© 2021 www.windowshopper.co.ke</a>
                 </div>
                 <!-- Copyright -->
                 </footer>
