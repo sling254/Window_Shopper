@@ -6,10 +6,8 @@
 [Vincent Bii](https://github.com/jepkess)
 ## Live Link
 
+https://windows-shoppers.herokuapp.com/
 
-## Home Page Look
-
-<img src="">
 
 ## Description
 1. As a seller, I would like to create an account and sign in
