@@ -43,15 +43,16 @@ class User(UserMixin,db.Model):
 class Product(db.Model):
   __tablename__ = 'products'
   id = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(55),nullable = False)
+  name = db.Column(db.String(255),nullable = False)
   short_description = db.Column(db.Text(), nullable = False)
   long_description = db.Column(db.Text(), nullable = False)
-  price = db.Column(db.DECIMAL(10, 2))
+  price = db.Column(db.Integer(),nullable = False)
   color = db.Column(db.String(),nullable=False)
   stock = db.Column(db.Integer,nullable=False)
-  brand = db.Column(db.String(10),nullable=False)
-  model = db.Column(db.String(10),nullable=False)  
+  brand = db.Column(db.String(200),nullable=False)
+  model = db.Column(db.String(200),nullable=False)  
   category = db.Column(db.String(255), index = True,nullable= False)
+  phone_no = db.Column(db.Integer,nullable=False)
   img_1_path= db.Column(db.String())
   img_2_path= db.Column(db.String())
   img_3_path= db.Column(db.String())
@@ -65,6 +66,21 @@ class Product(db.Model):
 
   def __repr__(self):
     return f'Product {self.name}'
+
+
+
+class Comment(db.Model):
+  __tablename__ = 'comments'
+  id = db.Column(db.Integer, primary_key = True)
+  comments = db.Column(db.String(),nullable = False)
+
+  def save_c(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def __repr__(self):
+    return f'Product {self.id}'
+
 
 
 

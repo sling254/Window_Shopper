@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for,abort,request, flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Product
-from .forms import UpdateProfile,ProductForm
+from ..models import User,Product,Comment
+from .forms import UpdateProfile,ProductForm,CommentsForm
 from .. import db, photos
 
 
@@ -12,6 +12,16 @@ def index():
     
     form = ProductForm()
     return render_template("index.html",form=form, products=products)
+@main.route('/about', methods = ['GET','POST'])
+def about():
+    
+    return render_template("about.html")
+
+
+@main.route('/review', methods = ['GET','POST'])
+def review():
+    
+    return render_template("reviews.html")
 
 @main.route('/new_product', methods = ['GET','POST'])
 def new_product():
@@ -26,12 +36,27 @@ def new_product():
         brand = form.brand.data
         model = form.model.data
         category = form.category.data
-        product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category,user_id = current_user._get_current_object().id)
+        phone_no = form.phone_no.data
+        product = Product(name=name,short_description=short_description,long_description=long_description,price=price,color=color,stock=stock,brand=brand,model=model,category=category,user_id = current_user._get_current_object().id,phone_no=phone_no)
         product.save_p()
         flash(f'Your Product {name} has been added successfully', 'success')
         return redirect(url_for('main.index'))
 
     return render_template("new_product.html",form=form)
+
+
+@main.route('/comments', methods = ['GET','POST'])
+def comments():
+    form = CommentsForm()
+    if form.validate_on_submit():
+        comments=form.comments.data
+        comment = Comment(comments=comments)
+        comment.save_c()
+        
+        flash(f'We have received your comments Thank you', 'success')
+        return redirect(url_for('main.index'))
+
+    return render_template("comments.html",form=form)
 
 @main.route('/deals')
 def deals():
