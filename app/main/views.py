@@ -8,7 +8,8 @@ from .. import db, photos
 
 @main.route('/', methods = ['GET','POST'])
 def index():
-    products = Product.query.all()
+    
+    products = Product.query.order_by(Product.time.desc())
     
     form = ProductForm()
     return render_template("index.html",form=form, products=products)
