@@ -1,14 +1,158 @@
 {% extends 'base.html'%}
 {%block content%}
-
-<div class="container">
-    <div class="col-md-4">
-        {% for product in products %}
-        <li>
-            {{product.price}}
-        </li>
-        {% endfor %}
+<!-- Start the Hero Section -->
+<div class="hero-section">
+    <div id="carouselCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='imgoffer4.jpg')}}" height="300vh" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='imgoffer2.png')}}" height="300vh" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='imgoffer1.png')}}" height="300vh" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+
+</div>
+  <!-- End of the Hero Section -->
+
+  <!-- Hot deals -->
+<section class="Products">
+  <div class="container">
+      <h1 class="text-center mt-3">Deals Of The Day</h1>
+      <div class="row">
+          {% for product in products %}
+          <div class="col-md-6">
+              <div class="card mb-3" style="max-width: 5400px;">
+                  <div class="row g-0">
+                      <!-- <div class="col-md-4">
+                      <img src="https://random.imagecdn.app/400/400" class="img-fluid rounded-start" alt="...">
+                      </div> -->
+                      <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ product.name | upper }}</h5>
+                          <p class="card-text">{{product.short_description}}</p>
+                          <p class="card-text">Ksh:{{product.price}}</p>
+                          <a class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#detailsModal{{product.id}}">VIEW</a>
+                          <p class="card-footer"><small class="text-muted">Date updated{{product.time.strftime('%d-%m-%Y')}}</small></p>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="detailsModal{{product.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{ product.name | upper }}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="card-text">Product Description: {{product.long_description}}</p>
+                  <p class="card-text">Product Color: {{product.color}}</p>
+                  <p class="card-text">Product Stock: {{product.Stock}}</p>
+                  <p class="card-text">Product Brand: {{product.brand}}</p>
+                  <p class="card-text">Product Model: {{product.model}}</p>
+                  <p class="card-text">Product Category: {{product.category}}</p>
+                </div>
+                <div class="modal-footer">
+                  <h1 class="">Contact:: {{product.phone_no}}</h1>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</section>
+<!-- Start Review Section -->
+<div class="review bg-light mt-3" id="review">
+  <div class="container ">
+    <h2 class="text-center">CUSTOMER REVIEW</h2>
+    <h1 class="text-center"id="tag">WHAY THEY SAY</h1>
+    <div class="row">
+      <div class="col-md">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ url_for('static', filename='avarta.jpg')}}" class="card-img-top rounded-circle" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">John Kamau</h5>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>  
+            <p class="card-text">Paradise Hahaha.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ url_for('static', filename='avarta.jpg')}}" class="card-img-top rounded-circle" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Karen Lily</h5>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span> 
+            <span class="fa fa-star checked"></span> 
+            <p class="card-text">Defination of happiness.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ url_for('static', filename='avarta.jpg')}}" class="card-img-top rounded-circle" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5> 
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span> 
+            <span class="fa fa-star checked"></span> 
+            <p class="card-text">Happiness is an emotional state characterized by feelings of Shopping here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Review Section -->
+
+<!-- Start Footer Section -->
+<footer class="bg-dark mt-5">
+  <h1 class="text-center">WINDOW_SHOPPER</h1>
+  <p class="text-center">123 Street, Nyeri Kenya</p>
+  <p class="text-center">+254 707 123 123 | info@gmail.com</p>
+  <p class="text-center">Copyright &copy; <span id="year">2021</span> by <span>window_shopper</span></p>
+</footer>
+<!-- end Footer Section -->
 
 
 

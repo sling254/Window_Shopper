@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Road+Rage&display=swap");
+
+#Surp {
+  width: 100%;
+  height: 85vh;
+}
+/* body {
+  background-color: aliceblue;
+} */
+#offer {
+  width: 70%;
+  margin: auto;
+  margin-top: 20%;
+  text-align: left;
+  height: 70%;
+  font-family: "Road Rage", cursive;
+  font-size: 100px;
+}
+#enjoy {
+  font-family: "Road Rage", cursive;
+}
+#shop {
+  margin: auto;
+  width: 33%;
+  height: 10%;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+footer{
+  color: white !important;
+}
+i{
+    color: aliceblue;
+}

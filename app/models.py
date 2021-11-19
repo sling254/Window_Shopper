@@ -74,6 +74,13 @@ class Comment(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   comments = db.Column(db.String(),nullable = False)
 
+  def save_c(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def __repr__(self):
+    return f'Product {self.id}'
+
 
 
 

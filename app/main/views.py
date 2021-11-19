@@ -51,8 +51,7 @@ def comments():
     if form.validate_on_submit():
         comments=form.comments.data
         comment = Comment(comments=comments)
-        db.session.add(comment)
-        db.session.commit()
+        comment.save_c()
         
         flash(f'We have received your comments Thank you', 'success')
         return redirect(url_for('main.index'))
